@@ -317,7 +317,7 @@ if [[ $latest != $current || $debug ]]; then
         (cd ..; swift build) # TODO: create tests and replace this line with `(cd ..; swift test)`
         # Create release package using remote binaries and make sure the Package.swift file is parseable
         generate_swift_package "../$package" "$home/package_template.swift" "../$distribution" $xcframeworks_repo ''
-        echo "Validating..."
+        echo "Validating part 2..."
         (cd ..; swift package dump-package | read pac)
     )
 
