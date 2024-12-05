@@ -313,7 +313,11 @@ if [[ $latest != $current || $debug ]]; then
         # Create test package using local binaries and make sure it builds
         generate_swift_package "../$package" "$home/package_template.swift" "../$distribution" $xcframeworks_repo $distribution
         echo "Validating..."
+        echo "swift package dump-package"
+        echo "ls -alh"
+        echo $(ls -alh)
         (cd ..; swift package dump-package | read pac)
+        echo "swift build"
         (cd ..; swift build) # TODO: create tests and replace this line with `(cd ..; swift test)`
         # Create release package using remote binaries and make sure the Package.swift file is parseable
         generate_swift_package "../$package" "$home/package_template.swift" "../$distribution" $xcframeworks_repo ''
